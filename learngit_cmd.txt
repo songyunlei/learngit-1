@@ -1,0 +1,144 @@
+
+git config --global user.name "user_name"
+git config --global user.email "user_name@mail.com"
+
+## git init, to change the current directory to repository
+git init
+
+git add readme.txt
+git commit -m "wrote a readme file"
+
+git add file1.txt
+git add file2.txt file3.txt
+git commit -m "add 3files."
+
+## look up the status of repository
+git status
+
+## look up the difference of a file
+git diff file_name
+
+git log
+git log --pretty=oneline
+
+git reset --hard HEAD^
+git reset --hard version_num
+
+git reflog
+
+git diff HEAD -- readme.txt
+
+git checkout -- readme.txt
+
+git reset HEAD readme.txt
+
+## remove a file from local repository
+git rm file_name
+git commit -m "remove test file"
+
+## generate local PC's ssh key
+ssh-keygen -t rsa -C "user_name@mail.com"
+
+## link local repository to remote repository
+git remote add origin git@github.com:user_name/learngit.git
+git remote add origin https://github.com:user_name/learngit.git
+
+## push local branch to remote repository
+## when the 1st push, need option: -u
+git push -u origin master
+git push origin master
+
+## clone branch from repository to local repository, default branch master
+git clone git@github.com:user_name/gitskills.git
+
+
+## create and merge branch
+## create branch: dev, 
+##option: -b means create and change to the new branch: dev
+git checkout -b dev
+
+git branch dev
+git checkout dev
+
+## look up branch info.
+git branch
+
+## switch to a branch: master
+git checkout master
+
+## merge a branch: dev to current branch: master
+git merge dev
+
+## delete a branch: dev
+git branch -d dev
+
+git checkout -b feature1
+
+## look up the merge info of branch
+git log --graph --pretty=oneline --abbrev-commit
+
+## no fast-forward merge with option: --no-ff
+git merge --no-ff -m"merge with no-ff" dev
+
+
+## git stash
+git stash
+## look up stash list
+git stash list
+
+## recovery the content in stash
+git stash apply + git stash drop
+git stash pop
+
+git stash apply stash@{0}
+git stash pop   stash@{0}
+
+
+## remove a new branch forcely
+git branch -D new_branch
+
+## look up remote info
+git remote
+git remote -v  ## detailed info
+
+## push local branch to remote
+git push origin master
+
+## pull new branch from remote
+git pull  ## current branch
+git pull origin dev
+
+## set the link for local branch with remote branch
+git branch --set-upstream dev origin/dev
+
+
+## look up all tag
+git tag
+
+## create a tag
+git tag <tag_name> ## default for HEAD
+git tag <tag_name> <version_num>
+git tag <tag_name> -m "comment" <version_num>
+git tag -a <tag_name> -m "comment" <version_num>
+## use PGP signed tag
+git tag -s <tag_name> -m "comment" <version_num>
+
+
+## look up a tag info
+git show <tag_name>
+
+## delete a tag
+git tag -d <tag_name>
+
+## push tag name to remote
+git push origin <tag_name>
+git push origin --tags  ## push all tags to remote
+
+## delete remote tag
+git tag -d v0.9
+git push origin :refs/tags/v0.9
+
+git add -f readme.txt~
+git check-ignore -v readme.txt~
+
+
